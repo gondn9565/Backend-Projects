@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 
 require("dotenv").config();
+app.use(express.json());
 app.get("/", (req, res) => {
   res.send("Let's learn full backend development");
 });
@@ -27,6 +28,10 @@ app.get("/search", (req, res) => {
   const age = req.query.age;
   res.send("Name is " + name + " and age is " + age);
   // res.send(req.query);
+});
+
+app.post("/data", (req, res) => {
+  res.send(req.body);
 });
 app.listen(3000, () => {
   console.log("Server is running on port 3000");
